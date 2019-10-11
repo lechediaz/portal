@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const Modal = ({
@@ -30,6 +30,13 @@ const Modal = ({
         document.body.appendChild(modalDiv);
         setCreadoEnDOM(true);
     }
+
+    useEffect(() => {
+        return () => {
+            // Eliminar div dinámico
+            document.getElementById(nombre).remove();
+        }
+    }, []);
 
     let styles = {};
 
